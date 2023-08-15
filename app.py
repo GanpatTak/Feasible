@@ -20,12 +20,14 @@ def predict_api():
     output = dtr.predict(input_data)
     return jsonify(output.tolist())  # Convert numpy array to a Python list
 
-@app.route('/predict', methods=['POST'])
+@app.route('/predict',methods =['POST'])
 def predict():
-    data = [float(x) for x in request.form.values()]
-    input_data = np.array(data).reshape(1, -1)
-    output = dtr.predict(input_data)[0]
-    return render_template("home.html", prediction_text="The House price prediction is {}".format(output))
+    data=[float(x) for x in request.form.values()]
+    final_input = np.array(data).reshape(1, -1)
+    print(final_input)
+    output = dtr.predict(final_input)[0]
+    return render_template("home.html",prediction_text = "The internal feasibility value is {}".format(output))
+
 
 if __name__ == "__main__":
     app.run(debug=True)

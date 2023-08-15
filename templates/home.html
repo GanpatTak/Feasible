@@ -1,3 +1,92 @@
-<h1>
-    Hello world
-    </h1>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML API Prediction</title>
+    <link href=https://fonts.googleapis.com/css?family=Pacifico|Arimo|Hind:300|Open+Sans+Condensed:300 rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arimo', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+
+        .login h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 28px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .login form {
+            margin-bottom: 20px;
+        }
+
+        .login input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .login button[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .login button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login">
+        <h1>Inhouse Complete Prediction</h1>
+        <form action="{{ url_for('predict')}}" method="post">
+            <input type="text" name="InhouseTQ" placeholder="InhouseTQ" required>
+            <input type="text" name="IR_Perct" placeholder="IR_Perct" required>
+            <input type="text" name="timeline_days" placeholder="timeline_days" required>
+            <input type="text" name="Incentive_in_USD" placeholder="Incentive_in_USD" required>
+            <input type="text" name="Has_Secondary_Spec_Yes" placeholder="Has_Secondary_Spec_Yes" required>
+            <input type="text" name="Country_CANADA" placeholder="Country_CANADA" required>
+            <input type="text" name="Country_FRANCE" placeholder="Country_FRANCE" required>
+            <input type="text" name="Country_GERMANY" placeholder="Country_GERMANY" required>
+            <input type="text" name="Country_INDIA" placeholder="Country_INDIA" required>
+            <input type="text" name="Country_ITALY" placeholder="Country_ITALY" required>
+            <input type="text" name="Country_SPAIN" placeholder="Country_SPAIN" required>
+            <input type="text" name="Country_UNITED KINGDOM" placeholder="Country_UNITED KINGDOM" required>
+            <input type="text" name="Country_USA" placeholder="Country_USA" required>
+            <input type="text" name="medical_profile_encoded" placeholder="medical_profile_encoded" required>
+
+            <button type="submit">Predict</button>
+        </form>
+    </div>
+    <div>
+        {{prediction_text}}
+    </div>
+</body>
+
+</html>
